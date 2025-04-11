@@ -36,12 +36,12 @@ const Profile = ({ trigger, open, onOpenChange }) => {
     try {
       console.log('Fetching user data and stats...'); // Debug log
       
-      const userResponse = await axios.get('http://localhost:5000/api/auth/profile', {
+      const userResponse = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('User data received:', userResponse.data); // Debug log
       
-      const statsResponse = await axios.get('http://localhost:5000/api/jobs/stats', {
+      const statsResponse = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/jobs/stats`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('Stats data received:', statsResponse.data); // Debug log

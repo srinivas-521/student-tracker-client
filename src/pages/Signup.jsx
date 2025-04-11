@@ -33,7 +33,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/signup`, formData);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('isFirstTimeUser', 'true');
       navigate('/home');

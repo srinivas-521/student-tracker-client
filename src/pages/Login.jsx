@@ -25,7 +25,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/auth/login`, formData);
       
       if (!response.data.token) {
         throw new Error('No token received from server');
@@ -35,7 +35,7 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
       
       // Verify the token works by making a test request
-      const testResponse = await axios.get('http://localhost:5000/api/auth/profile', {
+      const testResponse = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/profile`, {
         headers: {
           Authorization: `Bearer ${response.data.token}`,
         },

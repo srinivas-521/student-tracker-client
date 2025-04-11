@@ -35,7 +35,7 @@ const Home = () => {
 
   // Configure axios with token
   const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: import.meta.env.VITE_API_BASE_URL,
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
@@ -64,7 +64,7 @@ const Home = () => {
 
   const fetchUserData = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/auth/profile', {
+      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/auth/profile`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
